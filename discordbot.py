@@ -26,7 +26,8 @@ async def on_message(message):
         await message.channel.send('わん！')
     if message.content == '/パイソン頑張ります':
         await message.channel.send('頑張れ！')
-        
+    if message.content == '/テスト':
+        await message.channel.send('テストです！')
 
 # Botの起動とDiscordサーバーへの接続
 client.run(TOKEN)
