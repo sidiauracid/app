@@ -1,6 +1,7 @@
 # インストールした discord.py を読み込む
 import discord
-from config.const import InitConst 
+from config.const import InitConst
+from event.message import Message
 
 # 自分のBotのアクセストークンに置き換えてください
 TOKEN = InitConst.TOKEN
@@ -20,15 +21,9 @@ async def on_message(message):
     # メッセージ送信者がBotだった場合は無視する
     if message.author.bot:
         return
-    # 「/neko」と発言したら「にゃーん」が返る処理
-    if message.content == '/猫':
-        await message.channel.send('にゃーん')
-    if message.content == '/犬':
-        await message.channel.send('わん！')
-    if message.content == '/パイソン頑張ります':
-        await message.channel.send('頑張れ！')
-    if message.content == '/テスト':
-        await message.channel.send('テストです！')
+    
+    massageClass = Message()
+    await massageClass.active(message)
 
 # Botの起動とDiscordサーバーへの接続
 client.run(TOKEN)
